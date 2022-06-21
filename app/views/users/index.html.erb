@@ -1,0 +1,30 @@
+<h1>Bloggers</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Photo</th>
+            <th>Articles</th>
+            <th colspan= "2">Actions</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @users.each do |user| %>
+
+            <tr>
+                <td><%= button_to user.username, user, method: :get%></td>
+                <td><%= link_to gravatar_for(user, size: 150), user %></td>
+                <td><%= pluralize(user.articles.count, "article") %></td>
+                <td><%= button_to 'View profile', user, method: :get %></td>
+                <td><%= button_to 'Edit profile', edit_user_path(user), method: :get%></td>
+                <td>Joined <%= time_ago_in_words(user.created_at)%> ago</td>
+                <td>Edited <%= time_ago_in_words(user.updated_at)%> ago</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= button_to 'Return to articles list', articles_path, method: :get %>
