@@ -23,8 +23,13 @@
                 <td><%= link_to gravatar_for(user, size: 150), user %></td>
                 <td><%= pluralize(user.articles.count, "article") %></td>
                 <td><%= button_to 'View profile', user, method: :get %></td>
-                <% if logged_in? && user == current_user %>
-                  <td><%= button_to 'Edit profile', edit_user_path(user), method: :get%></td>
+                <% if logged_in? %>
+                  <% if user == current_user %>
+                    <td><%= button_to 'Edit profile', edit_user_path(user), method: :get%></td>
+                  <% end %>
+                  <% if current_user.admin? %>
+                    <td><%= button_to 'Delete user', user_path(user), method: :delete%></td>
+                  <% end %>
                 <% end %>
                 <td>Joined <%= time_ago_in_words(user.created_at)%> ago</td>
                 <td>Edited <%= time_ago_in_words(user.updated_at)%> ago</td>
