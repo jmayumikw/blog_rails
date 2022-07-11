@@ -58,5 +58,4 @@ class ArticlesController < ApplicationController
       redirect_to @article
     end
   end
-
 end
