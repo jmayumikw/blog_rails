@@ -23,6 +23,7 @@
                     <%= button_to category.name, category_path(category), method: :get%>
                   <% end %>
                 </td>
+                <td><%= pluralize(category.articles.count, "article") %></td>
                 <td>Created <%= time_ago_in_words(category.created_at) %> ago </td>
                 <td>Edited <%= time_ago_in_words(category.updated_at) %> ago </td>
             </tr>
