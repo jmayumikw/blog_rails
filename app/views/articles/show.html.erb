@@ -6,7 +6,10 @@
 <p><strong>Description: </strong><%= @article.description %></p>
 <p><strong>Created by: </strong><%= @article.user.username if @article.user %></p>
 <p><%= link_to gravatar_for(@article.user), user_path(@article.user) %></p>
-
+<p><% if @article.categories.any? %>
+  <%= render @article.categories %>
+  <% end %>
+</p>
 <p>
   <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
     <%= button_to 'Edit', edit_article_path(@article), method: :get %>
