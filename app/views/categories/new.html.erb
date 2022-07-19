@@ -11,15 +11,6 @@
     </ul>
 <% end %>
 
-<%= form_with(model: @category, data: { turbo: false }) do |f| %>
-    <p>
-        <%= f.label :name %><br/>
-        <%= f.text_field :name %>
-    </p>
+<%= render 'form' %>
 
-    <p>
-        <%= f.submit %>
-    </p>
-<% end %>
-
-<%= button_to 'Return to articles list', articles_path, method: :get %>
+<%= button_to 'Return to category list', categories_path, method: :get %>
